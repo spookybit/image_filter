@@ -12,6 +12,18 @@
       --grayscale: 0%;
     }
 
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .urlImage {
+        margin: 10px;
+    }
+
+    input[type=text] {
+      width: 500px;
+    }
+
     img {
       margin-top: 20px;
       filter: blur(var(--blur)) brightness(var(--brightness)) grayscale(var(--grayscale));
@@ -34,6 +46,11 @@
   <body>
     <h2>Photo Filter</h2>
 
+    <div class="urlImage">
+      <input type="text" placeholder="Enter new image url here">
+      <input type="submit" value="Submit" onClick="submit()">
+    </div>
+
     <div class="controls">
       <label for="blur">Blur</label>
       <input id="blur" type="range" name="blur" min="0" max="10" value="0" data-sizing="px">
@@ -49,6 +66,12 @@
 
   <script>
     const inputs = document.querySelectorAll('.controls input');
+    const image = document.querySelector("img");
+    const url = document.querySelector("input");
+
+    function submit() {
+      image.src=`${url.value}`
+    }
 
     function handleUpdate() {
       const suffix = this.dataset.sizing || '';

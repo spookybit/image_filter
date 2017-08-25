@@ -41,6 +41,10 @@
       width: 100px;
     }
 
+    .file {
+      width: auto;
+    }
+
   </style>
 
   <body>
@@ -50,6 +54,8 @@
       <input type="text" placeholder="Enter new image url here">
       <input type="submit" value="Submit" onClick="submit()">
     </div>
+
+    <input type="file" class="file"/>
 
     <div class="controls">
       <label for="blur">Blur</label>
@@ -67,7 +73,8 @@
   <script>
     const inputs = document.querySelectorAll('.controls input');
     const image = document.querySelector("img");
-    const url = document.querySelector("input");
+    let url = document.querySelector("input");
+    let file = document.querySelector(".file");
 
     function submit() {
       image.src=`${url.value}`
@@ -78,6 +85,10 @@
       document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
     }
 
+    file.addEventListener('change', function(e) {
+      let compUrl =  URL.createObjectURL(e.target.files[0]);
+      image.setAttribute('src', compUrl);
+    })
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>

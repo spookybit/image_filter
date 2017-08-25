@@ -13,6 +13,5 @@ Enter the url of another image to filter as well.
 ![image3](assets/image3.png)
 
 ## TODOS
-An upload picture from computer option.
 A drawing feature that allows someone to sketch over the image.
 Stickers to place over photo.
